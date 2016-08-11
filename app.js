@@ -12,18 +12,29 @@ const logger = require('koa-logger');
 const index = require('./routes/index');
 const users = require('./routes/users');
 
-const config = require{'./config'};
+const mongoose = require('mongoose');
+
+const config = require('./config');
 
 console.log(config.db);
+
+mongoose.connect(config.db);
+mongoose.connection.on('error',console.error.bind(console,'数据库连接出差！！！'));
 // middlewares
 app.use(convert(bodyparser));
 app.use(convert(json()));
 app.use(convert(logger()));
 app.use(require('koa-static')(__dirname + '/public'));
 
-app.use(views(__dirname + '/views', {
+/*app.use(views(__dirname + '/views', {
   extension: 'jade'
+}));*/
+app.use(views(__dirname + '/views', {
+  map:{
+  	html:'underscore'
+  }
 }));
+
 
 // logger
 app.use(async (ctx, next) => {
