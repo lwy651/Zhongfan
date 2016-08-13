@@ -17,11 +17,10 @@ var sleep = function(time){
 
 router.get('/', async function (ctx, next) {
 	usersDB.find(function(err,docs){
-		//console.log(docs);
+		console.log(docs);
 	});
-	var result = await sleep(10000,del);
-	console.log(result);
-  	await ctx.render('index');
+	ctx.body = {test:'xiao'};
+  	//wait ctx.render('index');
 })
 
 
