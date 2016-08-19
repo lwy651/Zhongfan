@@ -8,6 +8,7 @@ db.connection.on('open',function(){
 });
 
 var usersSchema = new mongoose.Schema({
+	_id     :{type:String},
 	username:    {type:String},
 	userpassword:{type:String}
 });

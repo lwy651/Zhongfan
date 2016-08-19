@@ -2,6 +2,7 @@ var router = require('koa-router')();
 const connectDB = require('../controls/connectDB');
 
 var usersDB = connectDB.users;
+var dd;
 
 var del = function(){
 	return 123;
@@ -16,11 +17,11 @@ var sleep = function(time){
 };
 
 router.get('/', async function (ctx, next) {
-	usersDB.find(function(err,docs){
-		console.log(docs);
+	await usersDB.find(function(err,docs){
+		dd       = docs[0];
+		//ctx.body = dd;
 	});
-	ctx.body = {test:'xiao'};
-  	//wait ctx.render('index');
+  	await ctx.render('index');
 })
 
 
