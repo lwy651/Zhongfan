@@ -17,8 +17,9 @@ var sleep = function(time){
 	});
 };
 
-router.get('/',home);
-router.post('/',suceess);
+router.get('/login',home);
+router.get('/',suceess);
+router.get('/getusername',getusername);
 
 async function suceess(ctx,next){
 	console.log(ctx.request.body.username);
@@ -31,6 +32,10 @@ async function home(ctx,next){
 		dd       = docs[0];
 	});
 	ctx.body = await render('index',{title:'登录'});
+}
+
+async function getusername(ctx,next){
+	ctx.body = 1;
 }
 
 /*router.get('/', async function (ctx, next) {

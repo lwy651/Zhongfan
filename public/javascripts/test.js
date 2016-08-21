@@ -1,0 +1,3 @@
+function getname(){
+	$.ajax
+}
