@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>651</title>
-	<link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-	651
-</body>
-</html>
+{% include "header.html" %}
+	<div class="mod-content">
+		<form autocomplete="off" method="POST" class="form-wrapper">
+			<div class="img-div characters">
+				<div class="logo-dom">
+					<img src="/images/icon.jpg">
+				</div>
+			</div>
+			<p class="form-item form-input-wrapper form-item-username form-input-mobile">
+				<input type="text" name="username" class="text-input" maxlength="60" placeholder="手机号/邮箱/用户名" value="" id="login-username"><span class="input-clearValue"></span>
+				<span id="login-userlist" class="pass-input-aide pass-input-userlist"></span>
+			</p>
+			<p class="form-item form-input-wrapper form-item-password form-input-mobile">
+				<input type="password" name="password" class="text-input" id="login-password" placeholder="密码" value="">
+				<span class="input-clearValue"></span>
+				<span id="login-pwdToggle" class="input-aide input-pwdToggle"></span>
+			</p>
+			<input type="submit" value="登录" id="login-submit" class="pass-button-full pass-button-full-disabled">
+		</form>
+	</div>
+{% include "foot.html" %}

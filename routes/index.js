@@ -1,5 +1,6 @@
 var router = require('koa-router')();
 const connectDB = require('../controls/connectDB');
+const render = require('./../lib/render');
 
 var usersDB = connectDB.users;
 var dd;
@@ -16,13 +17,30 @@ var sleep = function(time){
 	});
 };
 
-router.get('/', async function (ctx, next) {
+router.get('/',home);
+router.post('/',suceess);
+
+async function suceess(ctx,next){
+	console.log(ctx.request.body.username);
+	ctx.body = await render('suceess',ctx.request.body);
+}
+
+async function home(ctx,next){
+	var dd;
+	await usersDB.find(function(err,docs){
+		dd       = docs[0];
+	});
+	ctx.body = await render('index',{title:'登录'});
+}
+
+/*router.get('/', async function (ctx, next) {
 	await usersDB.find(function(err,docs){
 		dd       = docs[0];
 		//ctx.body = dd;
 	});
-  	await ctx.render('index');
-})
+	ctx.body = await render('error');
+  	//await ctx.render('index');
+})*/
 
 
 module.exports = router;
